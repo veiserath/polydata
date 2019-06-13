@@ -1,0 +1,4177 @@
+#           P O L Y D A T A 
+#            -15 . 0 . 0 -  
+#                      
+# icl64_Intel12.1 build: Tue 15/10/2013 13:27:57 on BRUVBUILD1B Windows
+#
+BEGIN PA3MN        1
+#Main menu
+.   1   0   1
+C 79|TASK_FEM
+    |
+#
+  BEGIN BAKEN        1
+#  Save and exit
+  .   1   0   1
+  ENDOF BAKEN
+#
+  BEGIN RDMSH        1
+#  Read a mesh file
+  .   1   1   1
+  I  1|       2
+  I  1|       5
+  I  1|       0
+  I  1|       0
+  I  1|       0
+  I  1|       3
+  D 20| 8.7545052E+01 2.3044883E-02 1.4875126E-03 9.9500000E-02
+      | 9.2465521E+01 1.4875147E-03-2.3044884E-02 9.9500000E-02
+      | 7.4239260E+00-1.1855506E-02-2.0201379E-02 4.9999998E-04
+      | 1.7073618E-05-1.5104840E-02 1.7903724E-02 9.9500000E-02
+      | 1.5521705E-02 4.3264147E-04 2.0365779E-02 9.9500000E-02
+  D 20| 1.1363616E+01-1.3432688E-02 1.6397715E-02 8.9609045E-02
+      | 1.3631484E+02-1.1389646E-02 1.7229600E-02 8.9795245E-02
+      | 5.5804346E+00-4.7321222E-03 2.1287022E-02 4.1579175E-04
+      | 0.0000000E+00-1.1058429E-02 1.5751935E-02 2.2314965E-02
+      | 1.6000001E-08 1.2738493E-02-1.3624795E-02 4.4066808E-03
+  ENDOF RDMSH
+#
+  BEGIN CHACO        1
+#  Mesh decomposition and optimization
+  .   0   0   1
+  ENDOF CHACO
+#
+  BEGIN RDOPT        1
+#  Mesh optimization
+  .   0   0   1
+  ENDOF RDOPT
+#
+  BEGIN PFUSE        1
+#  Combine mesh files
+  .   1   0   1
+  ENDOF PFUSE
+#
+  BEGIN CVMSH        1
+#  Convert a mesh file
+  .   1   0   1
+  ENDOF CVMSH
+#
+  BEGIN CNVRS        1
+#  Convert old result files
+  .   1   1   1
+  I  1|       0
+  C 200|res
+       |
+       |
+       |
+#
+    BEGIN OUTPU        1
+#    Outputs
+    .   1   6   1
+    I  1|       0
+    I  1|       1
+    D  3| 1.0000000E+00 1.0000000E+00 1.0000000E-02
+    D  0|
+    L  1|   T
+    I  1|       1
+#
+      BEGIN SPROB        1
+#      Manage Probe(s) output
+      .   0   0   1
+      ENDOF SPROB
+#
+      BEGIN UNCFDP       1
+#      Units for CFD-Post or Ansys Mapper
+      .   0   0   1
+      ENDOF UNCFDP
+    ENDOF OUTPU
+  ENDOF CNVRS
+#
+  BEGIN CNVCV        1
+#  Convert old csv files
+  .   0   2   1
+  I  1|       0
+  C 200|
+       |
+       |
+       |
+  L  1|   T
+  I  2|       1       1
+  I  1|       0
+  L  1|   F
+  ENDOF CNVCV
+#
+  BEGIN CVCAS        1
+#  Convert a mesh file into a case file
+  .   1   0   1
+  ENDOF CVCAS
+#
+  BEGIN CVSHL        1
+#  Convert shell mesh and results
+  .   0   2   1
+  C 200|res
+       |
+       |
+       |
+  C 200|output.res
+       |
+       |
+       |
+  C 200|output.msh
+       |
+       |
+       |
+  I  8|       0       0       0       1     500       3       0
+      |       0
+  D  7| 2.0000000E+01 1.6000000E+02 1.6000000E+02 8.0000001E-01
+      | 5.0000000E-01 1.0000000E+01 1.0000000E-01
+  I  1|       0
+  C 200|output.dyn
+       |
+       |
+       |
+  L  2|   F   F
+  ENDOF CVSHL
+#
+  BEGIN CVFRJ        1
+#  Generate a sliceable free jet
+  .   1   0   1
+  C 200|newfrj.msh
+       |
+       |
+       |
+  I  1|       2
+  D  5| 1.0000000E+00 1.0000000E+00 1.2000000E+00-1.0000000E+00
+      |-1.0000000E+00
+#
+    BEGIN MIXDM        1
+#    Flow domain
+    .   1   2   1
+    I  1|       1
+    C 79|1.
+        |
+    C 79|whole mesh
+        |
+    C 79|Free jet domain
+        |
+    ENDOF MIXDM
+#
+    BEGIN MIXBD        1
+#    Boundary conditions
+    .   1   1   1
+    I  1|       2
+#
+      BEGIN MIXBC        1
+#      Boundary
+      .   1   1   1
+      C 79|FAM1_IN is a free surface
+          |
+      I  1|       4
+      I  1|       1
+      C 79|(1*4).
+          |
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      I  1|       0
+      ENDOF MIXBC
+#
+      BEGIN MIXBC        2
+#      Boundary
+      .   1   1   1
+      C 79|FAM2_OUT is a free surface
+          |
+      I  1|       5
+      I  1|       1
+      C 79|(1*5).
+          |
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      I  1|       0
+      ENDOF MIXBC
+#
+      BEGIN MIXBC        3
+#      Boundary
+      .   1   1   1
+      C 79|FAM3_RDZEN is a free surface
+          |
+      I  1|       6
+      I  1|       1
+      C 79|(1*6).
+          |
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      I  1|       0
+      ENDOF MIXBC
+#
+      BEGIN MIXBC        4
+#      Boundary
+      .   1   1   1
+      C 79|FAM4_CYLINDE is a free surface
+          |
+      I  1|       7
+      I  1|       1
+      C 79|(1*7).
+          |
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      I  1|       0
+      ENDOF MIXBC
+#
+      BEGIN MIXBC        5
+#      Boundary
+      .   1   1   1
+      C 79|SOLID_1_1_2 is a free surface
+          |
+      I  1|       8
+      I  1|       1
+      C 79|(1*8).
+          |
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      I  1|       0
+      ENDOF MIXBC
+    ENDOF MIXBD
+  ENDOF CVFRJ
+#
+  BEGIN SYNTA        1
+#  Filename syntax
+  .   1   2   1
+  I  1|       1
+  C 200|p3
+       |
+       |
+       |
+  ENDOF SYNTA
+#
+  BEGIN OUTPU        1
+#  Outputs
+  .   1   6   1
+  I  1|   10240
+  I  1|       1
+  D  3| 1.0000000E+00 1.0000000E+00 1.0000000E-02
+  D  0|
+  L  1|   T
+  I  1|       1
+#
+    BEGIN SPROB        1
+#    Manage Probe(s) output
+    .   1   1   1
+    I  1|       1
+#
+      BEGIN CPROB        1
+#      Probe output
+      .   1   2   1
+      C 10|probe_01
+      D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      ENDOF CPROB
+    ENDOF SPROB
+#
+    BEGIN UNCFDP       1
+#    Units for CFD-Post or Ansys Mapper
+    .   1   0   1
+    L  1|   T
+    C 79|meter
+        |
+    C 79|kilogram
+        |
+    C 79|second
+        |
+    C 79|Kelvin
+        |
+    C 79|Ampere
+        |
+    L  1|   F
+    C 79|meter
+        |
+    C 79|kilogram
+        |
+    C 79|second
+        |
+    C 79|Kelvin
+        |
+    C 79|Ampere
+        |
+    ENDOF UNCFDP
+  ENDOF OUTPU
+#
+  BEGIN RDDAT        1
+#  Read an old data file
+  .   0   0   1
+  ENDOF RDDAT
+#
+  BEGIN CRRUN        1
+#  Create a new task
+  .   1   0   1
+  I  1|       4
+  ENDOF CRRUN
+#
+  BEGIN MDRUN        1
+#  Redefine global parameters of a task
+  .   1   0   1
+  ENDOF MDRUN
+#
+  BEGIN TOPOB        1
+#  Add topo-objects (for submodels)
+  .   0   0   1
+  C 20|FLUID_2_1_SO*FAM1_IN
+  C  6|(2*4).
+  I  1|      19
+  I  1|      -2
+  C 21|FLUID_2_1_SO*FAM2_OUT
+  C  6|(2*5).
+  I  1|      20
+  I  1|      -2
+  C 23|FLUID_2_1_SO*FAM3_RDZEN
+  C  6|(2*6).
+  I  1|      21
+  I  1|      -2
+  C 25|FLUID_2_1_SO*FAM4_CYLINDE
+  C  6|(2*7).
+  I  1|      22
+  I  1|      -2
+  C 24|SOLID_1_1_SO*SOLID_1_1_2
+  C  6|(3*8).
+  I  1|      24
+  I  1|      -2
+  C 12|FLUID_2_1_SO
+  C  4|(2).
+  I  1|       2
+  I  1|      -2
+  C 12|SOLID_1_1_SO
+  C  4|(3).
+  I  1|       3
+  I  1|      -2
+  ENDOF TOPOB
+#
+  BEGIN NRUN1        1
+#  F.E.M. Task 1
+  .   1   3   1
+  C 79|F.E.M. Task  1
+      |
+  I  1|       1
+  I  1|       0
+  I  1|       0
+  C 79|New computation
+      |
+  I  1|       6
+  D  1| 1.0000000E-09
+  D  1| 1.0000000E+04
+  I  1|       1
+  L  1|   F
+  D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+  I  1|       0
+  L  1|   F
+#
+    BEGIN NUPAR        1
+#    Numerical parameters
+    .   1  17   1
+    I  1|      30
+    D  2| 1.0000000E-03 1.0000000E+03
+    I  1|       0
+    I  1|       0
+    I  1|       0
+    I  0|
+    D  6| 0.0000000E+00 1.0000000E+00 1.0000000E-02 1.0000000E-04
+        | 2.5000000E-01 1.0000000E-02
+    I  1|      20
+    I  1|       0
+    C 200|
+         |
+         |
+         |
+    C 200|
+         |
+         |
+         |
+    D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+    D  2| 0.0000000E+00 0.0000000E+00
+    L  1|   F
+    L  1|   T
+    L  1|   F
+    L  1|   F
+    L  1|   F
+    L  1|   T
+    I  1|       2
+    I  1|       1
+    D  6| 1.0000000E-02 5.0000000E-01 1.0000000E+00 2.5000000E-01
+        | 5.0000000E-02 1.1000000E+00
+    L  2|   T   F
+    L  1|   F
+    I  1|       2
+    L  1|   F
+#
+      BEGIN ADAPT        1
+#      Adaptive Meshing
+      .   1   3   1
+      L  4|   F   F   T   F
+      I  3|       1       3       1
+      L  1|   F
+      L  1|   F
+#
+        BEGIN GCRIT        1
+#        Global Criteria
+        .   1   5   1
+        I  2|       1       0
+        D 10| 2.0443581E-04 2.0000000E-01 2.0443581E-03 5.0000000E-01
+            | 1.0000000E-01 2.5000000E-01 2.0443581E-03 5.0000001E-02
+            | 9.9999998E-03 0.0000000E+00
+        C 79|Adaptive meshing for contacts
+            |
+        I  1|       1
+        ENDOF GCRIT
+#
+        BEGIN GCRIT        2
+#        Global Criteria
+        .   1   5   1
+        I  2|       2       0
+        D 10| 2.0443581E-03 2.0000000E-01 2.0443581E-03 5.0000000E-01
+            | 1.0000000E-01 2.5000000E-01 2.0443581E-03 5.0000001E-02
+            | 9.9999998E-03 0.0000000E+00
+        C 79|Adaptive meshing for remeshings
+            |
+        I  1|       1
+        ENDOF GCRIT
+#
+        BEGIN GCRIT        3
+#        Global Criteria
+        .   1   5   1
+        I  2|       3       0
+        D 10| 2.0443581E-04 2.0000000E-01 2.0443581E-03 5.0000000E-01
+            | 1.0000000E-01 2.5000000E-01 2.0443581E-03 5.0000001E-02
+            | 9.9999998E-03 0.0000000E+00
+        C 79|Adaptive meshing for moving parts
+            |
+        I  1|       1
+        ENDOF GCRIT
+#
+        BEGIN GCRIT        4
+#        Global Criteria
+        .   1   5   1
+        I  2|       4       0
+        D 10| 2.0443581E-04 2.0000000E-01 2.0443581E-03 5.0000000E-01
+            | 1.0000000E-01 2.5000000E-01 2.0443581E-03 5.0000001E-02
+            | 9.9999998E-03 0.0000000E+00
+        C 79|Adaptive meshing for large variations of fields
+            |
+        I  1|       1
+        ENDOF GCRIT
+      ENDOF ADAPT
+#
+      BEGIN FIELDS       1
+#      Fields definition
+      .   0   0   1
+      C 79|COORDINATES
+          |
+      C 79|1.
+          |
+      I  3|       3      -1       1
+      C 79|VELOCITIES_#1
+          |
+      C 79|2.
+          |
+      I  3|       3      27       1
+      C 79|PRESSURE_#1
+          |
+      C 79|2.
+          |
+      I  3|       1      30       1
+      ENDOF FIELDS
+    ENDOF NUPAR
+#
+    BEGIN OPTIM        1
+#    Optimization
+    .   0   0   1
+    ENDOF OPTIM
+#
+    BEGIN CRPRO        1
+#    Create a sub-task
+    .   1   0   1
+    ENDOF CRPRO
+#
+    BEGIN MDPRO        1
+#    Redefine global parameters of a sub-task
+    .   0   0   1
+    ENDOF MDPRO
+#
+    BEGIN ASSVE        1
+#    Velocity fields management
+    .   0   0   1
+    C 79|2.
+        |
+    I  3|      84       0       0
+    ENDOF ASSVE
+#
+    BEGIN ASSTP        1
+#    Temperature fields management
+    .   0   0   1
+    ENDOF ASSTP
+#
+    BEGIN ASSDE        1
+#    Displacement fields management
+    .   0   0   1
+    ENDOF ASSDE
+#
+    BEGIN ASSPR        1
+#    Pressure fields management
+    .   0   0   1
+    C 79|2.
+        |
+    I  3|      84       0       0
+    ENDOF ASSPR
+#
+    BEGIN ASSST        1
+#    Stresses fields management
+    .   0   0   1
+    ENDOF ASSST
+#
+    BEGIN ASSDA        1
+#    Darcy fields management
+    .   0   0   1
+    ENDOF ASSDA
+#
+    BEGIN ASSMS        1
+#    Species fields management
+    .   0   0   1
+    ENDOF ASSMS
+#
+    BEGIN ASSPT        1
+#    Potential fields management
+    .   0   0   1
+    ENDOF ASSPT
+#
+    BEGIN ASSHF        1
+#    Thickness fields management
+    .   0   0   1
+    ENDOF ASSHF
+#
+    BEGIN ASSRD        1
+#    Irradiance fields management
+    .   0   0   1
+    ENDOF ASSRD
+#
+    BEGIN ASSIN        1
+#    Interfaces management (UV)
+    .   0   0   1
+    ENDOF ASSIN
+#
+    BEGIN PRCDN        1
+#    Assign the pressure
+    .   1   0   1
+    ENDOF PRCDN
+#
+    BEGIN PSICN        1
+#    Assign the stream function
+    .   0   0   1
+    ENDOF PSICN
+#
+    BEGIN CMINT        1
+#    Mesh-mesh interpolation
+    .   0   0   1
+    ENDOF CMINT
+#
+    BEGIN ESPES        1
+#    Define species
+    .   0   0   1
+    ENDOF ESPES
+#
+    BEGIN REACT        1
+#    Define reactions
+    .   0   0   1
+    ENDOF REACT
+#
+    BEGIN MDLST        1
+#    Define sub-models
+    .   1   1   1
+    I  1|       0
+    I  1|       0
+#
+      BEGIN LSTOPO       1
+#      Define topo-objects
+      .   0   0   1
+      ENDOF LSTOPO
+#
+      BEGIN LSMATD       1
+#      Define material datasets
+      .   0   0   1
+      ENDOF LSMATD
+    ENDOF MDLST
+#
+    BEGIN LMOLD        1
+#    Define molds
+    .   1   0   1
+    I  1|       0
+    I  1|       0
+    ENDOF LMOLD
+#
+    BEGIN FRJET        1
+#    Constraint on free jet displacement
+    .   1   3   1
+    L  1|   F
+    I  1|       1
+    C 79|1.
+        |
+    L  1|   T
+    I  1|       3
+    D  1| 0.0000000E+00
+    I  1|       0
+    I  1|       0
+    L  1|   T
+    L  1|   T
+    D  2| 0.0000000E+00 0.0000000E+00
+    L  1|   T
+    D  2| 9.9999998E-03 9.9999998E-03
+    ENDOF FRJET
+#
+    BEGIN TOPOP        1
+#    Add topo-objects (for geometric optim.)
+    .   0   0   1
+    ENDOF TOPOP
+#
+    BEGIN PRBLM        1
+#    Task 1 Sub-task 1
+    .   1  10   1
+    C 79|F.E.M. Task  1  Sub-task  1
+        |
+    I  1|       1
+    I  1|       0
+    I  1|      -1
+    I  1|       0
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    L  1|   F
+    L  1|   T
+    L  1|   F
+    L  1|   F
+    C 79|Generalized Newtonian isothermal flow problem
+        |
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+    I  1|      -1
+#
+      BEGIN SUPOR        1
+#      Domain of the sub-task
+      .   1   2   1
+      I  2|       2       0
+      C 79|2.
+          |
+      I  1|       0
+      I  1|       0
+      C 79|1.
+          |
+      C 79|Domain of the sub-task
+          |
+      ENDOF SUPOR
+#
+      BEGIN MATDA        1
+#      Material data
+      .   1   0   1
+#
+        BEGIN VISGA        1
+#        Shear-rate dependence of viscosity
+        .   1   0   1
+        I  1|       3
+#
+          BEGIN CSTGA        1
+#          Constant viscosity
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = fac
+              |
+          ENDOF CSTGA
+#
+          BEGIN BIRCA        1
+#          Bird-Carreau law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = facinf + (fac-facinf) *
+              |
+          C 79|        [1+(tnat*g)**2]**((expo-1)/2)
+              |
+          ENDOF BIRCA
+#
+          BEGIN POWER        1
+#          Power law
+          .   1   1   1
+          D  1| 6.0000000E+03
+          D  1| 1.0000000E+00
+          D  1| 4.0000000E-01
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = fac * (tnat*g)**(expo-1)
+              |
+          ENDOF POWER
+#
+          BEGIN BINGA        1
+#          Bingham law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|         f(g) = fac + ystr/g                         whe
+              |n g >= gcrit
+          C 79|              = fac + ystr/gcrit*(2-g/gcrit)         whe
+              |n g < gcrit
+          ENDOF BINGA
+#
+          BEGIN HERSH        1
+#          Herschel-Bulkley law
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|f(g) = fac1 / g + fac2 * (g/gcrit) ** (expo-1)        wh
+              |en g > gcrit
+          C 79|     = fac1 * [ 2 - g/gcrit ] / gcrit
+              |
+          C 79|     + fac2 * [ (2-expo) + (expo-1) * g/gcrit ]       wh
+              |en g < gcrit
+          C 79|
+              |
+          ENDOF HERSH
+#
+          BEGIN CROSS        1
+#          Cross law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = fac/ (1 + ( tnat*g )**expom)
+              |
+          ENDOF CROSS
+#
+          BEGIN LOGLW        1
+#          Log-Log law
+          .   1   1   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          C 79|f(g) = fac * 10**( a0 +a1*log(g/gcrit) +a11*log(g/gcrit)
+              |**2 )
+          ENDOF LOGLW
+#
+          BEGIN MDBIN        1
+#          modified Bingham law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = fac + ystr*(1-exp(-m*g))/g
+              |
+          C 79| where m = 3/gcrit
+              |
+          ENDOF MDBIN
+#
+          BEGIN MDHER        1
+#          modified Herschel-Bulkley law
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| f(g) = fac1 * ( 1 - exp( -3 * g / gcrit ) ) / g
+              |
+          C 79|      + fac2 * ( g / gcrit ) ** (expo-1)
+              |
+          C 79|
+              |
+          C 79|
+              |
+          ENDOF MDHER
+#
+          BEGIN YASUD        1
+#          Carreau-Yasuda law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          C 79| f(g) = facinf + (fac-facinf) *
+              |
+          C 79|        [1+(tnat*g)**expoa]**((expo-1)/expoa)
+              |
+          ENDOF YASUD
+#
+          BEGIN MDCRO        1
+#          modified Cross law
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|f(g) = fac / ( 1 + tnat * g ) ** expom
+              |
+          ENDOF MDCRO
+        ENDOF VISGA
+#
+        BEGIN PERME        1
+#        Porous medium and fluid viscosity
+        .   1   0   1
+        L  1|   T
+        D 11| 1.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 0.0000000E+00
+        ENDOF PERME
+#
+        BEGIN CVDRO        1
+#        Density
+        .   1   0   1
+        D  1| 1.0132500E+05
+        D  1| 1.0000000E+00
+        D  1| 8.3143000E+00
+        C 79|Perfect gaz law : ro(T) = Po * Mw / Rg * T
+            |
+        ENDOF CVDRO
+#
+        BEGIN CVDLA        1
+#        Lambda-viscosity
+        .   1   0   1
+        D  1|-6.6666667E-01
+        C 79|Mu-like law : lambda(T) = alfa * mu(T)
+            |
+        ENDOF CVDLA
+#
+        BEGIN CVDMU        1
+#        Mu-viscosity
+        .   1   0   1
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 3.0000000E+02
+        C 79|Power law : mu(T) = fact * (T/Tref)**expo
+            |
+        ENDOF CVDMU
+#
+        BEGIN CVDCP        1
+#        Heat capacity
+        .   1   0   1
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 3.0000000E+02
+        C 79|Power law : cp(T) = fact * (T/Tref)**expo
+            |
+        ENDOF CVDCP
+#
+        BEGIN CVDK         1
+#        Thermal conductivity
+        .   1   0   1
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 3.0000000E+02
+        C 79|Power law : k(T) = fact * (T/Tref)**expo
+            |
+        ENDOF CVDK
+#
+        BEGIN VISTP        1
+#        Temperature dependence of viscosity
+        .   1   0   1
+        I  1|       1
+#
+          BEGIN CSTTP        1
+#          No temperature dependence
+          .   1   1   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| No temperature dependence of the viscosity : h(t) = 1
+              |
+          ENDOF CSTTP
+#
+          BEGIN AREAP        1
+#          Arrhenius approximate law
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| h(t) = exp( -alfa * (t - talfa) )
+              |
+          ENDOF AREAP
+#
+          BEGIN ARRHE        1
+#          Arrhenius law
+          .   1   1   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+              |
+          ENDOF ARRHE
+#
+          BEGIN AREAS        1
+#          Arrhenius approximate shear stress law
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| h(t) = exp( -alfa * (t - talfa) )
+              |
+          ENDOF AREAS
+#
+          BEGIN ARHES        1
+#          Arrhenius shear stress law
+          .   1   1   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+              |
+          ENDOF ARHES
+#
+          BEGIN MIXED        1
+#          Mixed dependence
+          .   1   1   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|h(t,g) = 10**( a2*(t-t0) + a22*(t-t0)**2 + a12*(t-t0)*lo
+              |g(g/gcrit) )
+          ENDOF MIXED
+#
+          BEGIN FULCH        1
+#          Fulcher dependence
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| h(t) = 10 ** ( -F1 + F2 / (t-F3) )
+              |
+          ENDOF FULCH
+#
+          BEGIN WLFV         1
+#          WLF dependence
+          .   1   0   1
+          D  1| 8.8600000E+00
+          D  1| 1.0160000E+02
+          D  1| 3.0000000E+02
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+              |
+          ENDOF WLFV
+#
+          BEGIN WLFH         1
+#          WLF shear stress dependence
+          .   1   0   1
+          D  1| 8.8600000E+00
+          D  1| 1.0160000E+02
+          D  1| 3.0000000E+02
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+              |
+          ENDOF WLFH
+        ENDOF VISTP
+#
+        BEGIN MVLAS        1
+#        Differential viscoelastic models
+        .   1   0   1
+        I  1|       1
+#
+          BEGIN VELAS        1
+#          Viscoelastic model
+          .   1   4   1
+          I  1|       1
+          I  1|       1
+          I  1|       1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 2.0000000E+00
+          ENDOF VELAS
+        ENDOF MVLAS
+#
+        BEGIN VINTG        1
+#        Integral Viscoelastic models
+        .   1   3   1
+        L  1|   F
+        D  1| 0.0000000E+00
+        D  1| 1.0000000E+00
+        I  1|       1
+        I  1|       1
+        D  1| 1.0000000E+00
+        L  1|   T
+        L  1|   T
+        D  1| 0.0000000E+00
+        L  1|   F
+#
+          BEGIN DAMPF        1
+#          Damping function
+          .   1   0   1
+          I  1|       1
+          D  1| 1.0000000E+00
+          L  1|   F
+          D  1| 1.0000000E+00
+          L  1|   F
+          ENDOF DAMPF
+#
+          BEGIN INTPA        1
+#          Integration parameters
+          .   1   0   1
+          I  1|       1
+          I  1|      10
+          L  1|   F
+          D  1| 1.0000000E-09
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E-06
+          ENDOF INTPA
+#
+          BEGIN VISTP        1
+#          Temperature dependence of viscosity
+          .   1   0   1
+          I  1|       1
+#
+            BEGIN CSTTP        1
+#            No temperature dependence
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| No temperature dependence of the viscosity : h(t) = 1
+                |
+            ENDOF CSTTP
+#
+            BEGIN AREAP        1
+#            Arrhenius approximate law
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( -alfa * (t - talfa) )
+                |
+            ENDOF AREAP
+#
+            BEGIN ARRHE        1
+#            Arrhenius law
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                |
+            ENDOF ARRHE
+#
+            BEGIN AREAS        1
+#            Arrhenius approximate shear stress law
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( -alfa * (t - talfa) )
+                |
+            ENDOF AREAS
+#
+            BEGIN ARHES        1
+#            Arrhenius shear stress law
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                |
+            ENDOF ARHES
+#
+            BEGIN MIXED        1
+#            Mixed dependence
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|h(t,g) = 10**( a2*(t-t0) + a22*(t-t0)**2 + a12*(t-t0)*lo
+                |g(g/gcrit) )
+            ENDOF MIXED
+#
+            BEGIN FULCH        1
+#            Fulcher dependence
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = 10 ** ( -F1 + F2 / (t-F3) )
+                |
+            ENDOF FULCH
+#
+            BEGIN WLFV         1
+#            WLF dependence
+            .   1   0   1
+            D  1| 8.8600000E+00
+            D  1| 1.0160000E+02
+            D  1| 3.0000000E+02
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                |
+            ENDOF WLFV
+#
+            BEGIN WLFH         1
+#            WLF shear stress dependence
+            .   1   0   1
+            D  1| 8.8600000E+00
+            D  1| 1.0160000E+02
+            D  1| 3.0000000E+02
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                |
+            ENDOF WLFH
+          ENDOF VISTP
+#
+          BEGIN RELAX        1
+#          Relaxation mode
+          .   1   0   1
+          C 79|Relaxation mode  1
+              |
+          I  1|       1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          ENDOF RELAX
+        ENDOF VINTG
+#
+        BEGIN MASPE        1
+#        Density
+        .   1   2   1
+        D  1| 7.2000000E+02
+        D  1| 1.0000000E+00
+        I  1|       0
+        ENDOF MASPE
+#
+        BEGIN INERT        1
+#        Inertia terms
+        .   1   0   1
+        L  1|   F
+        ENDOF INERT
+#
+        BEGIN VOLEX        1
+#        Coefficient of thermal expansion
+        .   1   0   1
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        C 79| The density will be given by :   ro*( 1 - beta*( t - tb
+            |eta) )
+        C 79|
+            |
+        C 79|     where  - ro is the reference density introduced in
+            |the 'density' menu
+        C 79|            - beta is the coefficient of thermal expansi
+            |on
+        C 79|            - tbeta is a reference temperature
+            |
+        ENDOF VOLEX
+#
+        BEGIN CONDU        1
+#        Thermal conductivity
+        .   1   1   1
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        C 79|condu = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+            |
+        D  1| 0.0000000E+00
+        ENDOF CONDU
+#
+        BEGIN HECAP        1
+#        Heat capacity per unit mass
+        .   1   1   1
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        C 79|Cp = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+            |
+        D  1| 0.0000000E+00
+        ENDOF HECAP
+#
+        BEGIN CONVE        1
+#        Heat convection
+        .   1   0   1
+        L  1|   F
+        ENDOF CONVE
+#
+        BEGIN VHEAT        1
+#        Viscous heating
+        .   1   1   1
+        L  1|   F
+        D  1| 1.0000000E+00
+        ENDOF VHEAT
+#
+        BEGIN GRAVI        1
+#        Gravity
+        .   1   0   1
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        ENDOF GRAVI
+#
+        BEGIN TINIT        1
+#        Average estimate
+        .   1   2   1
+        C 79|Average temperature
+            |
+        D  5| 3.0000000E+02 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+#
+          BEGIN CSVMP        1
+#          Map from CSV file
+          .   1   1   1
+          C 200|csv
+               |
+               |
+               |
+          C 79|TEMPERATURE
+              |
+          I  4|       0       0       0       0
+          ENDOF CSVMP
+        ENDOF TINIT
+#
+        BEGIN PRODQ        1
+#        Source per unit volume
+        .   1   1   1
+        C 79|Heat source per unit volume
+            |
+        D  1| 0.0000000E+00
+        ENDOF PRODQ
+#
+        BEGIN ADVCO        1
+#        Carrier fluid concentration
+        .   1   0   1
+        D  1| 1.0132500E+05
+        D  1| 8.3143000E+00
+        C 79|Ideal gas law : c(T) = Po / Rg * T
+            |
+        ENDOF ADVCO
+#
+        BEGIN ADVDF        1
+#        Diffusivity
+        .   1   1   1
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        C 79|Power law : D(T) = fact * (T)**expo
+            |
+        I  1|       0
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        ENDOF ADVDF
+#
+        BEGIN ADVAT        1
+#        Thermal diffusion factor
+        .   1   0   1
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        C 79|Polynomial law : a(T) = a0 + a1 *T + a2 *T*T
+            |
+        ENDOF ADVAT
+#
+        BEGIN SIGTY        1
+#        Electrical conductivity
+        .   1   0   1
+        I  1|       1
+#
+          BEGIN CSTSG        1
+#          Constant conductivity
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|sig(t) = a
+              |
+          D  1| 0.0000000E+00
+          ENDOF CSTSG
+#
+          BEGIN LINSG        1
+#          Linear conductivity
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|sig(t) = a + b * (t-t0)
+              |
+          D  1| 0.0000000E+00
+          ENDOF LINSG
+#
+          BEGIN EXPSG        1
+#          Exponential conductivity
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|sig(t) = a * exp ( b - c/(t-t0) )
+              |
+          D  1| 0.0000000E+00
+          ENDOF EXPSG
+#
+          BEGIN POLSG        1
+#          Polynomial conductivity
+          .   1   1   1
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|sig(t) = a + b * (t-t0) + c * (t-t0)^2 + d * (t-t0)^3
+              |
+          D  1| 0.0000000E+00
+          ENDOF POLSG
+        ENDOF SIGTY
+#
+        BEGIN UNITS        1
+#        Change System of Units
+        .   1   0   1
+        L  1|   F
+        C 79|meter
+            |
+        C 79|kilogram
+            |
+        C 79|second
+            |
+        C 79|Kelvin
+            |
+        C 79|Ampere
+            |
+        L  1|   F
+        C 79|meter
+            |
+        C 79|kilogram
+            |
+        C 79|second
+            |
+        C 79|Kelvin
+            |
+        C 79|Ampere
+            |
+        ENDOF UNITS
+#
+        BEGIN YOUNG        1
+#        Elastic data
+        .   1   0   1
+        C 79|Elastic data
+            |
+        D  5| 1.0000000E+00 2.5000000E-01 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       1       1       1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        L  1|   T
+        L  1|   T
+        ENDOF YOUNG
+#
+        BEGIN PRMSH        1
+#        Layer permeability
+        .   1   1   1
+        D  1| 1.0000000E+00
+        ENDOF PRMSH
+#
+        BEGIN CRYST        1
+#        Mat. Data for crystallisation
+        .   1   0   1
+        D  1| 1.0000000E+00
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 2.0000000E+02
+        D  1| 2.0000000E-01
+        D  1| 6.0000000E+01
+        D  1| 1.0000000E-03
+        D  1| 1.0000000E-02
+        D  1| 6.0000000E-02
+        D  1| 1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 1.0000000E+00
+        D  1|-1.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 1.0000000E+00
+#
+          BEGIN HCAPC        1
+#          Heat capacity for semi-crystalline phase
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|Amorphous phase
+              |
+          C 79|  Cpa = Cpa0 + Cpa1*(t-t0)
+              |
+          C 79|            + Cpa2*(t-t0)**2 + Cpa3*(t-t0)**3
+              |
+          C 79|Semi-crystalline phase
+              |
+          C 79|  Cpsc = Cpsc0 + Cpsc1*(t-t0)
+              |
+          C 79|          + Cpsc2*(t-t0)**2 + Cpsc3*(t-t0)**3
+              |
+          D  1| 0.0000000E+00
+          ENDOF HCAPC
+#
+          BEGIN VSTPC        1
+#          Temperature dependence of viscosity
+          .   1   0   1
+          I  1|       1
+#
+            BEGIN CSTTP        1
+#            No temperature dependence
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| No temperature dependence of the viscosity : h(t) = 1
+                |
+            ENDOF CSTTP
+#
+            BEGIN AREAP        1
+#            Arrhenius approximate law
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( -alfa * (t - talfa) )
+                |
+            ENDOF AREAP
+#
+            BEGIN ARRHE        1
+#            Arrhenius law
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                |
+            ENDOF ARRHE
+#
+            BEGIN WLFV         1
+#            WLF dependence
+            .   1   0   1
+            D  1| 8.8600000E+00
+            D  1| 1.0160000E+02
+            D  1| 3.0000000E+02
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                |
+            ENDOF WLFV
+          ENDOF VSTPC
+        ENDOF CRYST
+#
+        BEGIN LIGHT        1
+#        Simplified Viscoelastic Model
+        .   1   0   1
+        L  1|   T
+        D  1| 1.0000000E+00
+#
+          BEGIN FNVIS        1
+#          First Normal Viscosity
+          .   1   0   1
+          I  1|       1
+          L  1|   T
+#
+            BEGIN CSTGA        1
+#            Constant viscosity
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| f(k) = fac
+                |
+            ENDOF CSTGA
+#
+            BEGIN BIRCA        1
+#            Bird-Carreau law
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| f(k) = facinf + (fac-facinf) *
+                |
+            C 79|        [1+(tnat*k)**2]**((expo-1)/2)
+                |
+            ENDOF BIRCA
+#
+            BEGIN POWER        1
+#            Power law
+            .   1   1   1
+            D  1| 1.0000000E+00
+            D  1| 1.0000000E+00
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| f(k) = fac * (tnat*k)**(expo-1)
+                |
+            ENDOF POWER
+#
+            BEGIN CROSS        1
+#            Cross law
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| f(k) = fac/ (1 + ( tnat*k )**expom)
+                |
+            ENDOF CROSS
+#
+            BEGIN YASUD        1
+#            Carreau-Yasuda law
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            C 79| f(k) = facinf + (fac-facinf) *
+                |
+            C 79|        [1+(tnat*k)**expoa]**((expo-1)/expoa)
+                |
+            ENDOF YASUD
+#
+            BEGIN MDCRO        1
+#            modified Cross law
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|f(k) = fac / ( 1 + tnat * k ) ** expom
+                |
+            ENDOF MDCRO
+          ENDOF FNVIS
+#
+          BEGIN SRRLX        1
+#          Shear-rate dependence of relaxation time
+          .   1   0   1
+          I  1|       1
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          ENDOF SRRLX
+        ENDOF LIGHT
+#
+        BEGIN NARAMY       1
+#        Data for Narayanaswamy model
+        .   1   0   1
+#
+          BEGIN BRELM        1
+#          Bulk relaxation modulus
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  8| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+          I  1|       0
+          ENDOF BRELM
+#
+          BEGIN GRELM        1
+#          Shear relaxation modulus
+          .   1   0   1
+          D  1| 1.0000000E+00
+          D  8| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+          I  1|       0
+          ENDOF GRELM
+#
+          BEGIN SRELM        1
+#          Structural relaxation modulus
+          .   1   0   1
+          D  8| 1.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+          I  1|       1
+          ENDOF SRELM
+#
+          BEGIN SHIFT        1
+#          Shift function
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|Phi(T,Tf) = exp[A*x*(1/(Tref-To)-1/(T-To))
+              |
+          C 79|            +A*(1-x)*(1/(Tref-To)-1/(Tf-To))]
+              |
+          ENDOF SHIFT
+#
+          BEGIN GDILF        1
+#          Glassy dilation function
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|Ag = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+              |
+          D  1| 0.0000000E+00
+          ENDOF GDILF
+#
+          BEGIN LDILF        1
+#          Liquid dilation function
+          .   1   0   1
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          C 79|Al = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+              |
+          D  1| 0.0000000E+00
+          ENDOF LDILF
+        ENDOF NARAMY
+#
+        BEGIN ANISO        1
+#        Anisotropy tensor C
+        .   1   0   1
+        C 79|Anisotropy tensor C
+            |
+        L  1|   T
+        D  6| 1.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 1.0000000E+00
+        ENDOF ANISO
+#
+        BEGIN RADIA        1
+#        Data for internal radiation model
+        .   1   0   1
+        I  1|       8
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 5.6704000E-08
+        I  1|       1
+        D  2| 1.0000000E+00 0.0000000E+00
+        D  1| 0.0000000E+00
+        L  1|   F
+        ENDOF RADIA
+      ENDOF MATDA
+#
+      BEGIN BDCVE        1
+#      Flow boundary conditions
+      .   1   2   1
+      L  1|   T
+      D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00
+      I  1|      -1
+      I  1|      -1
+#
+        BEGIN BDSVE        1
+#        Flow Boundary Set
+        .   1  12   1
+        C 79|Inflow along FAM1_IN
+            |
+        I  1|       4
+        I  1|       7
+        C 79|(2*4).
+            |
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  5|      -1      -1       1       0       0
+        I  3|       0      -1      -1
+        D  5| 2.2230000E-03 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 2.2230000E-03 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|      -1      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  1|       0
+        D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+        I  3|       1       1       1
+        D 15| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E-07 0.0000000E+00 0.0000000E+00
+        L  3|   F   F   F
+        I  3|      -1       0       0
+        D  5| 5.0000000E-06 2.5000000E-04 9.9999998E-03 1.0000000E+00
+            | 3.0000000E+02
+        ENDOF BDSVE
+#
+        BEGIN BDSVE        2
+#        Flow Boundary Set
+        .   1  12   1
+        C 79|Outflow along FAM2_OUT
+            |
+        I  1|       5
+        I  1|       8
+        C 79|(2*5).
+            |
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  5|       3      -1      -1      -1       0
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|      -1      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  1|       0
+        D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+        I  3|       1       1       1
+        D 15| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E-07 0.0000000E+00 0.0000000E+00
+        L  3|   F   F   F
+        I  3|      -1       0       0
+        D  5| 5.0000000E-06 2.5000000E-04 9.9999998E-03 1.0000000E+00
+            | 3.0000000E+02
+        ENDOF BDSVE
+#
+        BEGIN BDSVE        3
+#        Flow Boundary Set
+        .   1  12   1
+        C 79|vx,vy,vz imposed along FAM3_RDZEN
+            |
+        I  1|       6
+        I  1|      11
+        C 79|(2*6).
+            |
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  5|      -1      -1      -1      -1      -1
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 1.0000000E+00-6.2800000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  1|       0
+        D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+        I  3|       1       1       1
+        D 15| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E-07 0.0000000E+00 0.0000000E+00
+        L  3|   F   F   F
+        I  3|      -1       0       0
+        D  5| 5.0000000E-06 2.5000000E-04 9.9999998E-03 1.0000000E+00
+            | 3.0000000E+02
+        ENDOF BDSVE
+#
+        BEGIN BDSVE        4
+#        Flow Boundary Set
+        .   1  12   1
+        C 79|Zero wall velocity (vn=vs=0) along FAM4_CYLINDE
+            |
+        I  1|       7
+        I  1|      22
+        C 79|(2*7).
+            |
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  5|      -1      -1      -1      -1      -1
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  3|       0      -1      -1
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        I  1|       0
+        D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+        I  3|       1       1       1
+        D 15| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E-07 0.0000000E+00 0.0000000E+00
+        L  3|   F   F   F
+        I  3|      -1       0       0
+        D  5| 5.0000000E-06 2.5000000E-04 9.9999998E-03 1.0000000E+00
+            | 3.0000000E+02
+        ENDOF BDSVE
+      ENDOF BDCVE
+#
+      BEGIN BDCPR        1
+#      Pressure boundary conditions
+      .   0   0   1
+      ENDOF BDCPR
+#
+      BEGIN BDCTP        1
+#      Thermal boundary conditions
+      .   0   1   1
+      I  1|       1
+      C 79|
+          |
+      I  1|      -1
+      D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00
+      D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00
+      ENDOF BDCTP
+#
+      BEGIN BDCDE        1
+#      Displacement boundary conditions
+      .   0   0   1
+      ENDOF BDCDE
+#
+      BEGIN BDCMS        1
+#      Concentration boundary conditions
+      .   1   2   1
+      C 79|Concentration boundary conditions
+          |
+      ENDOF BDCMS
+#
+      BEGIN BDCPT        1
+#      Potential boundary conditions
+      .   0   0   1
+      ENDOF BDCPT
+#
+      BEGIN BDCHF        1
+#      Borders for thickness calculation
+      .   0   0   1
+      ENDOF BDCHF
+#
+      BEGIN BDCCT        1
+#      Contact conditions
+      .   0   0   1
+      ENDOF BDCCT
+#
+      BEGIN BDCRD        1
+#      Radiation boundary conditions
+      .   0   0   1
+      ENDOF BDCRD
+#
+      BEGIN SMAIL        1
+#      Global remeshing
+      .   0   0   1
+      ENDOF SMAIL
+#
+      BEGIN RIGTR        1
+#      Rigid translation
+      .   1   0   1
+      I  2|       0       0
+      C 79|.
+          |
+      I  1|      -1
+      D  1| 0.0000000E+00
+      D  1| 0.0000000E+00
+      D  1| 0.0000000E+00
+      C 79|Translation speed : d/dt (X, Y, Z) = (Ux, Uy, Uz)
+          |
+      ENDOF RIGTR
+#
+      BEGIN INTRP        1
+#      Interpolation
+      .   1   7   1
+      I  1|       4
+      I  1|       1
+      L  1|   F
+      I  2|       1       0
+      L  1|   F
+      L  1|   F
+      I  2|       1       0
+      I  1|       1
+      L  1|   T
+      D  1| 1.0000000E+00
+      L  1|   F
+      D  1| 1.0000000E+00
+      I  1|       0
+      ENDOF INTRP
+#
+      BEGIN BUBBL        1
+#      Bubbling
+      .   1   0   1
+      I  1|       0
+      ENDOF BUBBL
+#
+      BEGIN SIMPL        1
+#      Define moving parts
+      .   1   2   1
+      I  1|       1
+      I  1|       1
+      L  1|   T
+      D  1| 9.9999998E-03
+#
+        BEGIN CIMPL        1
+#        New moving part
+        .   1   1   1
+        C 79|moving part #1
+            |
+#
+          BEGIN IMPSU        1
+#          Definition of the moving part domain
+          .   1   1   1
+          I  2|       3       0
+          C 79|3.
+              |
+          ENDOF IMPSU
+#
+          BEGIN IMPMO        1
+#          Definition of the motion
+          .   1   2   1
+          D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          D  3| 0.0000000E+00 0.0000000E+00 1.0000000E+00
+          D  1| 0.0000000E+00
+          D  1|-6.2800000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          L  1|   T
+          ENDOF IMPMO
+#
+          BEGIN MATDA        1
+#          Material data
+          .   1   0   1
+#
+            BEGIN VISGA        1
+#            Shear-rate dependence of viscosity
+            .   1   0   1
+            I  1|       1
+#
+              BEGIN CSTGA        1
+#              Constant viscosity
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = fac
+                  |
+              ENDOF CSTGA
+#
+              BEGIN BIRCA        1
+#              Bird-Carreau law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = facinf + (fac-facinf) *
+                  |
+              C 79|        [1+(tnat*g)**2]**((expo-1)/2)
+                  |
+              ENDOF BIRCA
+#
+              BEGIN POWER        1
+#              Power law
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = fac * (tnat*g)**(expo-1)
+                  |
+              ENDOF POWER
+#
+              BEGIN BINGA        1
+#              Bingham law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|         f(g) = fac + ystr/g                         whe
+                  |n g >= gcrit
+              C 79|              = fac + ystr/gcrit*(2-g/gcrit)         whe
+                  |n g < gcrit
+              ENDOF BINGA
+#
+              BEGIN HERSH        1
+#              Herschel-Bulkley law
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|f(g) = fac1 / g + fac2 * (g/gcrit) ** (expo-1)        wh
+                  |en g > gcrit
+              C 79|     = fac1 * [ 2 - g/gcrit ] / gcrit
+                  |
+              C 79|     + fac2 * [ (2-expo) + (expo-1) * g/gcrit ]       wh
+                  |en g < gcrit
+              C 79|
+                  |
+              ENDOF HERSH
+#
+              BEGIN CROSS        1
+#              Cross law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = fac/ (1 + ( tnat*g )**expom)
+                  |
+              ENDOF CROSS
+#
+              BEGIN LOGLW        1
+#              Log-Log law
+              .   1   1   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              C 79|f(g) = fac * 10**( a0 +a1*log(g/gcrit) +a11*log(g/gcrit)
+                  |**2 )
+              ENDOF LOGLW
+#
+              BEGIN MDBIN        1
+#              modified Bingham law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = fac + ystr*(1-exp(-m*g))/g
+                  |
+              C 79| where m = 3/gcrit
+                  |
+              ENDOF MDBIN
+#
+              BEGIN MDHER        1
+#              modified Herschel-Bulkley law
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| f(g) = fac1 * ( 1 - exp( -3 * g / gcrit ) ) / g
+                  |
+              C 79|      + fac2 * ( g / gcrit ) ** (expo-1)
+                  |
+              C 79|
+                  |
+              C 79|
+                  |
+              ENDOF MDHER
+#
+              BEGIN YASUD        1
+#              Carreau-Yasuda law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              C 79| f(g) = facinf + (fac-facinf) *
+                  |
+              C 79|        [1+(tnat*g)**expoa]**((expo-1)/expoa)
+                  |
+              ENDOF YASUD
+#
+              BEGIN MDCRO        1
+#              modified Cross law
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|f(g) = fac / ( 1 + tnat * g ) ** expom
+                  |
+              ENDOF MDCRO
+            ENDOF VISGA
+#
+            BEGIN PERME        1
+#            Porous medium and fluid viscosity
+            .   1   0   1
+            L  1|   T
+            D 11| 1.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 1.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+                | 1.0000000E+00 0.0000000E+00 0.0000000E+00
+            ENDOF PERME
+#
+            BEGIN CVDRO        1
+#            Density
+            .   1   0   1
+            D  1| 1.0132500E+05
+            D  1| 1.0000000E+00
+            D  1| 8.3143000E+00
+            C 79|Perfect gaz law : ro(T) = Po * Mw / Rg * T
+                |
+            ENDOF CVDRO
+#
+            BEGIN CVDLA        1
+#            Lambda-viscosity
+            .   1   0   1
+            D  1|-6.6666667E-01
+            C 79|Mu-like law : lambda(T) = alfa * mu(T)
+                |
+            ENDOF CVDLA
+#
+            BEGIN CVDMU        1
+#            Mu-viscosity
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 3.0000000E+02
+            C 79|Power law : mu(T) = fact * (T/Tref)**expo
+                |
+            ENDOF CVDMU
+#
+            BEGIN CVDCP        1
+#            Heat capacity
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 3.0000000E+02
+            C 79|Power law : cp(T) = fact * (T/Tref)**expo
+                |
+            ENDOF CVDCP
+#
+            BEGIN CVDK         1
+#            Thermal conductivity
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 3.0000000E+02
+            C 79|Power law : k(T) = fact * (T/Tref)**expo
+                |
+            ENDOF CVDK
+#
+            BEGIN VISTP        1
+#            Temperature dependence of viscosity
+            .   1   0   1
+            I  1|       1
+#
+              BEGIN CSTTP        1
+#              No temperature dependence
+              .   1   1   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| No temperature dependence of the viscosity : h(t) = 1
+                  |
+              ENDOF CSTTP
+#
+              BEGIN AREAP        1
+#              Arrhenius approximate law
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| h(t) = exp( -alfa * (t - talfa) )
+                  |
+              ENDOF AREAP
+#
+              BEGIN ARRHE        1
+#              Arrhenius law
+              .   1   1   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                  |
+              ENDOF ARRHE
+#
+              BEGIN AREAS        1
+#              Arrhenius approximate shear stress law
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| h(t) = exp( -alfa * (t - talfa) )
+                  |
+              ENDOF AREAS
+#
+              BEGIN ARHES        1
+#              Arrhenius shear stress law
+              .   1   1   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                  |
+              ENDOF ARHES
+#
+              BEGIN MIXED        1
+#              Mixed dependence
+              .   1   1   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|h(t,g) = 10**( a2*(t-t0) + a22*(t-t0)**2 + a12*(t-t0)*lo
+                  |g(g/gcrit) )
+              ENDOF MIXED
+#
+              BEGIN FULCH        1
+#              Fulcher dependence
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| h(t) = 10 ** ( -F1 + F2 / (t-F3) )
+                  |
+              ENDOF FULCH
+#
+              BEGIN WLFV         1
+#              WLF dependence
+              .   1   0   1
+              D  1| 8.8600000E+00
+              D  1| 1.0160000E+02
+              D  1| 3.0000000E+02
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                  |
+              ENDOF WLFV
+#
+              BEGIN WLFH         1
+#              WLF shear stress dependence
+              .   1   0   1
+              D  1| 8.8600000E+00
+              D  1| 1.0160000E+02
+              D  1| 3.0000000E+02
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                  |
+              ENDOF WLFH
+            ENDOF VISTP
+#
+            BEGIN MVLAS        1
+#            Differential viscoelastic models
+            .   1   0   1
+            I  1|       1
+#
+              BEGIN VELAS        1
+#              Viscoelastic model
+              .   1   4   1
+              I  1|       1
+              I  1|       1
+              I  1|       1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 2.0000000E+00
+              ENDOF VELAS
+            ENDOF MVLAS
+#
+            BEGIN VINTG        1
+#            Integral Viscoelastic models
+            .   1   3   1
+            L  1|   F
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            I  1|       1
+            I  1|       1
+            D  1| 1.0000000E+00
+            L  1|   T
+            L  1|   T
+            D  1| 0.0000000E+00
+            L  1|   F
+#
+              BEGIN DAMPF        1
+#              Damping function
+              .   1   0   1
+              I  1|       1
+              D  1| 1.0000000E+00
+              L  1|   F
+              D  1| 1.0000000E+00
+              L  1|   F
+              ENDOF DAMPF
+#
+              BEGIN INTPA        1
+#              Integration parameters
+              .   1   0   1
+              I  1|       1
+              I  1|      10
+              L  1|   F
+              D  1| 1.0000000E-09
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E-06
+              ENDOF INTPA
+#
+              BEGIN VISTP        1
+#              Temperature dependence of viscosity
+              .   1   0   1
+              I  1|       1
+#
+                BEGIN CSTTP        1
+#                No temperature dependence
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| No temperature dependence of the viscosity : h(t) = 1
+                    |
+                ENDOF CSTTP
+#
+                BEGIN AREAP        1
+#                Arrhenius approximate law
+                .   1   0   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( -alfa * (t - talfa) )
+                    |
+                ENDOF AREAP
+#
+                BEGIN ARRHE        1
+#                Arrhenius law
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                    |
+                ENDOF ARRHE
+#
+                BEGIN AREAS        1
+#                Arrhenius approximate shear stress law
+                .   1   0   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( -alfa * (t - talfa) )
+                    |
+                ENDOF AREAS
+#
+                BEGIN ARHES        1
+#                Arrhenius shear stress law
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                    |
+                ENDOF ARHES
+#
+                BEGIN MIXED        1
+#                Mixed dependence
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79|h(t,g) = 10**( a2*(t-t0) + a22*(t-t0)**2 + a12*(t-t0)*lo
+                    |g(g/gcrit) )
+                ENDOF MIXED
+#
+                BEGIN FULCH        1
+#                Fulcher dependence
+                .   1   0   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = 10 ** ( -F1 + F2 / (t-F3) )
+                    |
+                ENDOF FULCH
+#
+                BEGIN WLFV         1
+#                WLF dependence
+                .   1   0   1
+                D  1| 8.8600000E+00
+                D  1| 1.0160000E+02
+                D  1| 3.0000000E+02
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                    |
+                ENDOF WLFV
+#
+                BEGIN WLFH         1
+#                WLF shear stress dependence
+                .   1   0   1
+                D  1| 8.8600000E+00
+                D  1| 1.0160000E+02
+                D  1| 3.0000000E+02
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                    |
+                ENDOF WLFH
+              ENDOF VISTP
+#
+              BEGIN RELAX        1
+#              Relaxation mode
+              .   1   0   1
+              C 79|Relaxation mode  1
+                  |
+              I  1|       1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              ENDOF RELAX
+            ENDOF VINTG
+#
+            BEGIN MASPE        1
+#            Density
+            .   1   2   1
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            I  1|       0
+            ENDOF MASPE
+#
+            BEGIN INERT        1
+#            Inertia terms
+            .   1   0   1
+            L  1|   F
+            ENDOF INERT
+#
+            BEGIN VOLEX        1
+#            Coefficient of thermal expansion
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79| The density will be given by :   ro*( 1 - beta*( t - tb
+                |eta) )
+            C 79|
+                |
+            C 79|     where  - ro is the reference density introduced in
+                |the 'density' menu
+            C 79|            - beta is the coefficient of thermal expansi
+                |on
+            C 79|            - tbeta is a reference temperature
+                |
+            ENDOF VOLEX
+#
+            BEGIN CONDU        1
+#            Thermal conductivity
+            .   1   1   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|condu = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+                |
+            D  1| 0.0000000E+00
+            ENDOF CONDU
+#
+            BEGIN HECAP        1
+#            Heat capacity per unit mass
+            .   1   1   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|Cp = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+                |
+            D  1| 0.0000000E+00
+            ENDOF HECAP
+#
+            BEGIN CONVE        1
+#            Heat convection
+            .   1   0   1
+            L  1|   F
+            ENDOF CONVE
+#
+            BEGIN VHEAT        1
+#            Viscous heating
+            .   1   1   1
+            L  1|   F
+            D  1| 1.0000000E+00
+            ENDOF VHEAT
+#
+            BEGIN GRAVI        1
+#            Gravity
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            ENDOF GRAVI
+#
+            BEGIN TINIT        1
+#            Average estimate
+            .   1   2   1
+            C 79|Average temperature
+                |
+            D  5| 3.0000000E+02 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+#
+              BEGIN CSVMP        1
+#              Map from CSV file
+              .   1   1   1
+              C 200|csv
+                   |
+                   |
+                   |
+              C 79|TEMPERATURE
+                  |
+              I  4|       0       0       0       0
+              ENDOF CSVMP
+            ENDOF TINIT
+#
+            BEGIN PRODQ        1
+#            Source per unit volume
+            .   1   1   1
+            C 79|Heat source per unit volume
+                |
+            D  1| 0.0000000E+00
+            ENDOF PRODQ
+#
+            BEGIN ADVCO        1
+#            Carrier fluid concentration
+            .   1   0   1
+            D  1| 1.0132500E+05
+            D  1| 8.3143000E+00
+            C 79|Ideal gas law : c(T) = Po / Rg * T
+                |
+            ENDOF ADVCO
+#
+            BEGIN ADVDF        1
+#            Diffusivity
+            .   1   1   1
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|Power law : D(T) = fact * (T)**expo
+                |
+            I  1|       0
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            ENDOF ADVDF
+#
+            BEGIN ADVAT        1
+#            Thermal diffusion factor
+            .   1   0   1
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            C 79|Polynomial law : a(T) = a0 + a1 *T + a2 *T*T
+                |
+            ENDOF ADVAT
+#
+            BEGIN SIGTY        1
+#            Electrical conductivity
+            .   1   0   1
+            I  1|       1
+#
+              BEGIN CSTSG        1
+#              Constant conductivity
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|sig(t) = a
+                  |
+              D  1| 0.0000000E+00
+              ENDOF CSTSG
+#
+              BEGIN LINSG        1
+#              Linear conductivity
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|sig(t) = a + b * (t-t0)
+                  |
+              D  1| 0.0000000E+00
+              ENDOF LINSG
+#
+              BEGIN EXPSG        1
+#              Exponential conductivity
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|sig(t) = a * exp ( b - c/(t-t0) )
+                  |
+              D  1| 0.0000000E+00
+              ENDOF EXPSG
+#
+              BEGIN POLSG        1
+#              Polynomial conductivity
+              .   1   1   1
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|sig(t) = a + b * (t-t0) + c * (t-t0)^2 + d * (t-t0)^3
+                  |
+              D  1| 0.0000000E+00
+              ENDOF POLSG
+            ENDOF SIGTY
+#
+            BEGIN UNITS        1
+#            Change System of Units
+            .   1   0   1
+            L  1|   F
+            C 79|meter
+                |
+            C 79|kilogram
+                |
+            C 79|second
+                |
+            C 79|Kelvin
+                |
+            C 79|Ampere
+                |
+            L  1|   F
+            C 79|meter
+                |
+            C 79|kilogram
+                |
+            C 79|second
+                |
+            C 79|Kelvin
+                |
+            C 79|Ampere
+                |
+            ENDOF UNITS
+#
+            BEGIN YOUNG        1
+#            Elastic data
+            .   1   0   1
+            C 79|Elastic data
+                |
+            D  5| 1.0000000E+00 2.5000000E-01 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+            I  3|       1       1       1
+            D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+            D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+            D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+            L  1|   T
+            L  1|   T
+            ENDOF YOUNG
+#
+            BEGIN PRMSH        1
+#            Layer permeability
+            .   1   1   1
+            D  1| 1.0000000E+00
+            ENDOF PRMSH
+#
+            BEGIN CRYST        1
+#            Mat. Data for crystallisation
+            .   1   0   1
+            D  1| 1.0000000E+00
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 2.0000000E+02
+            D  1| 2.0000000E-01
+            D  1| 6.0000000E+01
+            D  1| 1.0000000E-03
+            D  1| 1.0000000E-02
+            D  1| 6.0000000E-02
+            D  1| 1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+            D  1|-1.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 1.0000000E+00
+#
+              BEGIN HCAPC        1
+#              Heat capacity for semi-crystalline phase
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|Amorphous phase
+                  |
+              C 79|  Cpa = Cpa0 + Cpa1*(t-t0)
+                  |
+              C 79|            + Cpa2*(t-t0)**2 + Cpa3*(t-t0)**3
+                  |
+              C 79|Semi-crystalline phase
+                  |
+              C 79|  Cpsc = Cpsc0 + Cpsc1*(t-t0)
+                  |
+              C 79|          + Cpsc2*(t-t0)**2 + Cpsc3*(t-t0)**3
+                  |
+              D  1| 0.0000000E+00
+              ENDOF HCAPC
+#
+              BEGIN VSTPC        1
+#              Temperature dependence of viscosity
+              .   1   0   1
+              I  1|       1
+#
+                BEGIN CSTTP        1
+#                No temperature dependence
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| No temperature dependence of the viscosity : h(t) = 1
+                    |
+                ENDOF CSTTP
+#
+                BEGIN AREAP        1
+#                Arrhenius approximate law
+                .   1   0   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( -alfa * (t - talfa) )
+                    |
+                ENDOF AREAP
+#
+                BEGIN ARRHE        1
+#                Arrhenius law
+                .   1   1   1
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| h(t) = exp( alfa / (t-t0) - alfa / (talfa-t0) )
+                    |
+                ENDOF ARRHE
+#
+                BEGIN WLFV         1
+#                WLF dependence
+                .   1   0   1
+                D  1| 8.8600000E+00
+                D  1| 1.0160000E+02
+                D  1| 3.0000000E+02
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| ln(h(t)) = c1*(Tr-Ta)/(c2+Tr-Ta)-c1*(T-Ta)/(c2+T-Ta)
+                    |
+                ENDOF WLFV
+              ENDOF VSTPC
+            ENDOF CRYST
+#
+            BEGIN LIGHT        1
+#            Simplified Viscoelastic Model
+            .   1   0   1
+            L  1|   T
+            D  1| 1.0000000E+00
+#
+              BEGIN FNVIS        1
+#              First Normal Viscosity
+              .   1   0   1
+              I  1|       1
+              L  1|   T
+#
+                BEGIN CSTGA        1
+#                Constant viscosity
+                .   1   0   1
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| f(k) = fac
+                    |
+                ENDOF CSTGA
+#
+                BEGIN BIRCA        1
+#                Bird-Carreau law
+                .   1   0   1
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| f(k) = facinf + (fac-facinf) *
+                    |
+                C 79|        [1+(tnat*k)**2]**((expo-1)/2)
+                    |
+                ENDOF BIRCA
+#
+                BEGIN POWER        1
+#                Power law
+                .   1   1   1
+                D  1| 1.0000000E+00
+                D  1| 1.0000000E+00
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| f(k) = fac * (tnat*k)**(expo-1)
+                    |
+                ENDOF POWER
+#
+                BEGIN CROSS        1
+#                Cross law
+                .   1   0   1
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79| f(k) = fac/ (1 + ( tnat*k )**expom)
+                    |
+                ENDOF CROSS
+#
+                BEGIN YASUD        1
+#                Carreau-Yasuda law
+                .   1   0   1
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 1.0000000E+00
+                C 79| f(k) = facinf + (fac-facinf) *
+                    |
+                C 79|        [1+(tnat*k)**expoa]**((expo-1)/expoa)
+                    |
+                ENDOF YASUD
+#
+                BEGIN MDCRO        1
+#                modified Cross law
+                .   1   0   1
+                D  1| 1.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                D  1| 0.0000000E+00
+                C 79|f(k) = fac / ( 1 + tnat * k ) ** expom
+                    |
+                ENDOF MDCRO
+              ENDOF FNVIS
+#
+              BEGIN SRRLX        1
+#              Shear-rate dependence of relaxation time
+              .   1   0   1
+              I  1|       1
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 1.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              ENDOF SRRLX
+            ENDOF LIGHT
+#
+            BEGIN NARAMY       1
+#            Data for Narayanaswamy model
+            .   1   0   1
+#
+              BEGIN BRELM        1
+#              Bulk relaxation modulus
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  8| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                  | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+                  | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              I  1|       0
+              ENDOF BRELM
+#
+              BEGIN GRELM        1
+#              Shear relaxation modulus
+              .   1   0   1
+              D  1| 1.0000000E+00
+              D  8| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                  | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+                  | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              I  1|       0
+              ENDOF GRELM
+#
+              BEGIN SRELM        1
+#              Structural relaxation modulus
+              .   1   0   1
+              D  8| 1.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                  | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+              D  8| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+                  | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              I  1|       1
+              ENDOF SRELM
+#
+              BEGIN SHIFT        1
+#              Shift function
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|Phi(T,Tf) = exp[A*x*(1/(Tref-To)-1/(T-To))
+                  |
+              C 79|            +A*(1-x)*(1/(Tref-To)-1/(Tf-To))]
+                  |
+              ENDOF SHIFT
+#
+              BEGIN GDILF        1
+#              Glassy dilation function
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|Ag = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+                  |
+              D  1| 0.0000000E+00
+              ENDOF GDILF
+#
+              BEGIN LDILF        1
+#              Liquid dilation function
+              .   1   0   1
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              D  1| 0.0000000E+00
+              C 79|Al = a + b*(t-t0) + c*(t-t0)**2 + d*(t-t0)**3
+                  |
+              D  1| 0.0000000E+00
+              ENDOF LDILF
+            ENDOF NARAMY
+#
+            BEGIN ANISO        1
+#            Anisotropy tensor C
+            .   1   0   1
+            C 79|Anisotropy tensor C
+                |
+            L  1|   T
+            D  6| 1.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+                | 0.0000000E+00 1.0000000E+00
+            ENDOF ANISO
+#
+            BEGIN RADIA        1
+#            Data for internal radiation model
+            .   1   0   1
+            I  1|       8
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 0.0000000E+00
+            D  1| 5.6704000E-08
+            I  1|       1
+            D  2| 1.0000000E+00 0.0000000E+00
+            D  1| 0.0000000E+00
+            L  1|   F
+            ENDOF RADIA
+          ENDOF MATDA
+#
+          BEGIN IMPNU        1
+#          Superposition technique
+          .   1   2   1
+          D  1| 0.0000000E+00
+          D  1| 6.0000002E-01
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          D  1| 0.0000000E+00
+          ENDOF IMPNU
+#
+          BEGIN LCRIT        1
+#          Local Criteria
+          .   1   4   1
+          I  1|       0
+          D 10| 0.0000000E+00 2.0000000E-01 0.0000000E+00 5.0000000E-01
+              | 1.0000000E-01 2.5000000E-01 0.0000000E+00 5.0000001E-02
+              | 9.9999998E-03 0.0000000E+00
+          C 79|moving part #1
+              |
+          I  1|       0
+          I  2|       3       0
+          ENDOF LCRIT
+#
+          BEGIN IMPBD        1
+#          Flow boundary conditions
+          .   1   4   1
+          I  1|       1
+          D 15| 1.0000000E+00 1.0000000E+05 1.0000000E+00 1.0000000E+00
+              | 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              | 0.0000000E+00 1.0000000E+00 0.0000000E+00 0.0000000E+00
+              | 1.0000000E-07 0.0000000E+00 0.0000000E+00
+          D  1| 1.0000000E+08
+          D  1| 1.0000000E-10
+          I  2|       1       1
+          I  1|       1
+          ENDOF IMPBD
+#
+          BEGIN IMPTP        1
+#          Thermal boundary conditions
+          .   1   0   1
+          I  1|       1
+#
+            BEGIN TINIT        1
+#            Average estimate
+            .   1   2   1
+            C 79|Temperature distribution
+                |
+            D  5| 3.0000000E+02 0.0000000E+00 0.0000000E+00 0.0000000E+00
+                | 0.0000000E+00
+#
+              BEGIN CSVMP        1
+#              Map from CSV file
+              .   1   1   1
+              C 200|csv
+                   |
+                   |
+                   |
+              C 79|TEMPERATURE
+                  |
+              I  4|       0       0       0       0
+              ENDOF CSVMP
+            ENDOF TINIT
+          ENDOF IMPTP
+        ENDOF CIMPL
+      ENDOF SIMPL
+#
+      BEGIN VOLUM        1
+#      Volume conservation
+      .   1   0   1
+      L  1|   F
+      L  1|   F
+      D  1| 0.0000000E+00
+      ENDOF VOLUM
+#
+      BEGIN MOTIO        1
+#      Mold motion
+      .   1   4   1
+      D 12| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      L  1|   F
+      D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+      I  1|       0
+      D  1| 1.0000000E+00
+      D  1|-1.0000000E+00
+      ENDOF MOTIO
+    ENDOF PRBLM
+  ENDOF NRUN1
+ENDOF PA3MN
+#
+BEGIN OUTFLD       1
+#List of fields saved in result files
+.   0   0   1
+C 20|_TASK_F.E.M. Task  1
+C 21|UV   VELOCITIES
+C  2|2.
+C  3|YES
+C 21|P    PRESSURE
+C  2|2.
+C  3|YES
+C 21|IN#1 INSIDE#1
+C  2|2.
+C  2|NO
+C 21|VISC VISCOSITY
+C  2|2.
+C  3|YES
+C 21|Gdot LOCAL SHEAR-RATE
+C  2|2.
+C  3|YES
+C 21|MV   MVPTS_VELOCITY
+C  2|1.
+C  3|YES
+ENDOF OUTFLD
+#
+BEGIN OPEN         1
+#Files opening
+.   0   0   1
+C 55|MSH__1 f i       convert.msh
+C 55|RES__1 f o       Outputs/res
+C 55|RST__1 f o       Outputs/rst
+C 55|CFX__1 f io      Outputs/cfx
+C 55|PRB__1 f o       Outputs/probe_01
+#
+  BEGIN TOPO         1
+#  Topological operations
+  .   0   0   1
+  C  6|MSH__1
+  C 100|   1 root mesh.
+       |                                           1
+  C  2|1.
+  C 100|   1 (R*FAM1_IN).
+       |                                           2
+  C  6|(1*4).
+  C 100|   1 (R*FAM2_OUT).
+       |                                           3
+  C  6|(1*5).
+  C 100|   1 (R*FAM3_RDZEN).
+       |                                           4
+  C  6|(1*6).
+  C 100|   1 (R*FAM4_CYLINDE).
+       |                                           5
+  C  6|(1*7).
+  C 100|   1 (R*SOLID_1_1_2).
+       |                                           6
+  C  6|(1*8).
+  C 100|   1 FLUID_2_1_SO.
+       |                                           7
+  C  2|2.
+  C 100|   1 (FLUID_2_1_SO*FAM1_IN).
+       |                                           8
+  C  6|(2*4).
+  C 100|   1 (FLUID_2_1_SO*FAM2_OUT).
+       |                                           9
+  C  6|(2*5).
+  C 100|   1 (FLUID_2_1_SO*FAM3_RDZEN).
+       |                                          10
+  C  6|(2*6).
+  C 100|   1 (FLUID_2_1_SO*FAM4_CYLINDE).
+       |                                          11
+  C  6|(2*7).
+  C 100|   1 SOLID_1_1_SO.
+       |                                          12
+  C  2|3.
+  C 100|   1 $(SOLID_1_1_SO).
+       |                                          13
+  C  5|$(3).
+#
+    BEGIN FIELDS       1
+#    Fields definition
+    .   0   0   1
+#
+      BEGIN FIELD1       1
+#      One field definition
+      .   1   2   1
+      I  7|       1       1       1       3       0       0       1
+      C 21|XY   COORDINATES
+#
+        BEGIN READ         1
+#        One field initialization by read
+        .   0   0   1
+        C  6|MSH__1
+        ENDOF READ
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       2
+#      One field definition
+      .   1   2   1
+      I  7|       7       8       1       3       0       0       0
+      C 21|UV   VELOCITIES
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       3
+#      One field definition
+      .   1   2   1
+      I  7|       7      10       0       1      -1       0      -1
+      C 21|P    PRESSURE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       4
+#      One field definition
+      .   1   2   1
+      I  7|       8       5       0       1       0       0       0
+      C 21|Q     Flow rate
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       8       1
+        I  1|       4
+        D  1| 3.0875000E-06
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       5
+#      One field definition
+      .   1   2   1
+      I  7|       8       8       1       3      -1       0       0
+      C 21|v ns Veloc. N/S
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       6
+#      One field definition
+      .   1   2   1
+      I  7|       8       5       0       1      -1       0      -1
+      C 21|Gr.p Grad P
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       7
+#      One field definition
+      .   1   2   1
+      I  7|       8       5       0       1      -1       0      -1
+      C 21|p    Pressure
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       8
+#      One field definition
+      .   1   2   1
+      I  7|       9       8       1       3      -1       0       0
+      C 21|v ns Veloc. N/S
+      ENDOF FIELD1
+#
+      BEGIN FIELD1       9
+#      One field definition
+      .   1   2   1
+      I  7|       9       5       0       1      -1       0      -1
+      C 21|p    Pressure
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      10
+#      One field definition
+      .   1   2   1
+      I  7|       7      12       0       1       0       0       0
+      C 21|IN#1 INSIDE#1
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      11
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       1       3      -1       0       0
+      C 21|TR#1 TRANSLAT#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  3|       4       4       4
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      12
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       1       3      -1       0       0
+      C 21|VT#1 V__TRANS#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  3|       4       4       4
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      13
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       1       3      -1       0       0
+      C 21|PR#1 PT_ROTA_#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  3|       4       4       4
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      14
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       1       3      -1       0       0
+      C 21|DI#1 D_IN_ROT#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  3|       4       4       4
+        D  1| 0.0000000E+00
+        D  1| 0.0000000E+00
+        D  1| 1.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      15
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|IA#1 ALPHA_AN#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      16
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|VA#1 V_ANGLE_#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1|-1.0466667E-01
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      17
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|TH#1 THETA_AN#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      18
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|VT#1 VTHETA__#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      19
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|PH#1 PHI_ANG_#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      20
+#      One field definition
+      .   1   2   1
+      I  7|       1       5       0       1      -1       0       0
+      C 21|VP#1 VPHI____#1
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  1|       4
+        D  1| 0.0000000E+00
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      21
+#      One field definition
+      .   1   2   1
+      I  7|       8       5       0       1       0       0       0
+      C 21|Q    FLOW_RATE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      22
+#      One field definition
+      .   1   2   1
+      I  7|       9       5       0       1       0       0       0
+      C 21|Q    FLOW_RATE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      23
+#      One field definition
+      .   1   2   1
+      I  7|      10       5       0       1       0       0       0
+      C 21|Q    FLOW_RATE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      24
+#      One field definition
+      .   1   2   1
+      I  7|      11       5       0       1       0       0       0
+      C 21|Q    FLOW_RATE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      25
+#      One field definition
+      .   1   2   1
+      I  7|       7      12       0       1       0       0       0
+      C 21|VISC VISCOSITY
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      26
+#      One field definition
+      .   1   2   1
+      I  7|       7      12       0       1       0       0       0
+      C 21|Gdot LOCAL SHEAR-RATE
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      27
+#      One field definition
+      .   1   2   1
+      I  7|      10       8       1       3       0       0       0
+      C 21|VC   CART_VELOCITIES
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      28
+#      One field definition
+      .   1   2   1
+      I  7|       1       1       1       3       0       0       1
+      C 21|XY_0 COORDINI
+#
+        BEGIN EVALX        1
+#        One field initialization by interpolatio
+        .   0   0   1
+        L  1|   F
+        I  2|       1       1
+        I  3|       1       1       1
+        D  0|
+        D  0|
+        D  0|
+        ENDOF EVALX
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      29
+#      One field definition
+      .   1   2   1
+      I  7|       7       8       1       3       0       0       0
+      C 21|VI#1 VEL_IMP#1
+      ENDOF FIELD1
+#
+      BEGIN FIELD1      30
+#      One field definition
+      .   1   2   1
+      I  7|       1       8       1       3       0       0       0
+      C 21|MV   MVPTS_VELOCITY
+      ENDOF FIELD1
+#
+      BEGIN PROBLS       1
+#      Problems definition
+      .   0   0   1
+#
+        BEGIN PROB1        1
+#        One problem specifications
+        .   1   2   1
+        C 16|Navier-Stokes 3D
+        I  4|       1       1       7       7
+        I  1|       1
+        I  2|       2       3
+        I  2|       0       2
+        I  2|       0       0
+        L 15|   F   F   F   F   T   F   F   F   F   F   F   F   F   T
+            |   T
+        I  3|       3       1       5
+        D 32| 7.2000000E+02 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 6.0000000E+03 1.0000000E+00 4.0000000E-01
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 9.9999998E-03 0.0000000E+00 0.0000000E+00
+#
+          BEGIN BEVAXS       1
+#          Field init.(parameter) on a boundary
+          .   1   0   1
+          C 16| imposed inflow
+          I  3|       2       8       0
+          I  1|       2
+          I  4|       1       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          I  4|       2       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          I  4|       3       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          ENDOF BEVAXS
+#
+          BEGIN EXCLUD       1
+#          exclude elements in moving parts
+          .   0   0   1
+          I  1|      10
+          I  0|
+          ENDOF EXCLUD
+        ENDOF PROB1
+#
+        BEGIN PROB1        2
+#        One problem specifications
+        .   1   1   1
+        C 16| Inflow
+        I  4|       4       1       8       8
+        I  2|       1       4
+        I  3|       2       7       6
+        I  3|       0       2       2
+        L 15|   F   F   F   F   T   F   T   F   F   F   F   F   F   T
+            |   F
+        I  4|       3       1       5       0
+        D 33| 7.2000000E+02 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 6.0000000E+03 1.0000000E+00 4.0000000E-01
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 1.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 9.9999998E-03 0.0000000E+00 0.0000000E+00
+            |-1.0000000E+00
+#
+          BEGIN BEVAXS       1
+#          Field init.(parameter) on a boundary
+          .   1   0   1
+          C 16|inflow : X fixed
+          I  3|       1       1       0
+          I  1|       1
+          I  4|       1       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          I  4|       2       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          I  4|       3       1       0       0
+          D  0|
+          D  0|
+          D  0|
+          ENDOF BEVAXS
+#
+          BEGIN BEVXYZ       1
+#          Condition on a field at given coord.
+          .   1   1   1
+          C 16|P = 0
+          I  4|       7       8       1       0
+          D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          I  1|       1
+          D  1| 0.0000000E+00
+          ENDOF BEVXYZ
+        ENDOF PROB1
+#
+        BEGIN BEVAXS       1
+#        Field init.(parameter) on a boundary
+        .   1   0   1
+        C 16| Outflow  Vs = 0
+        I  3|       8       9       2
+        I  1|       1
+        I  4|       1       0       0       0
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  0|
+        D  0|
+        I  4|       2       0       0       0
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  0|
+        D  0|
+        ENDOF BEVAXS
+#
+        BEGIN PROB1        3
+#        One problem specifications
+        .   1   0   1
+        C 16|Cartesian Veloc.
+        I  3|     240       1      10
+        I  1|       1
+        I  1|      27
+        I  1|       0
+        L  0|
+        I  1|       0
+        D 10| 0.0000000E+00 0.0000000E+00 0.0000000E+00-6.2800000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 1.0000000E+00
+        ENDOF PROB1
+#
+        BEGIN BEVAXS       2
+#        Field init.(parameter) on a boundary
+        .   1   0   1
+        C 16| V = Cart.Veloc.
+        I  3|       2      10       0
+        I  1|      27
+        I  4|       1       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        I  4|       2       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        I  4|       3       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        ENDOF BEVAXS
+#
+        BEGIN BEVAXS       3
+#        Field init.(parameter) on a boundary
+        .   1   0   1
+        C 16| V = 0 imposed
+        I  3|       2      11       0
+        I  1|       1
+        I  4|       1       0       0       0
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  0|
+        D  0|
+        I  4|       2       0       0       0
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  0|
+        D  0|
+        I  4|       3       0       0       0
+        D  5| 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00
+        D  0|
+        D  0|
+        ENDOF BEVAXS
+#
+        BEGIN PROB1        4
+#        One problem specifications
+        .   1   0   1
+        C 16|Inside problem
+        I  3|      59       1       7
+        I  1|       1
+        I  1|      10
+        I  1|       0
+        L  1|   F
+        I  4|       1      12      12       0
+        D  2| 0.0000000E+00 0.0000000E+00
+        ENDOF PROB1
+#
+        BEGIN TRESHOLD     1
+#        Treshold (moving parts)
+        .   0   0   1
+        C 16|CTR V(mov.parts)
+        I  2|       2       7
+        I  1|      10
+        I  1|      29
+        I  1|       1
+        D  1| 6.0000002E-01
+        ENDOF TRESHOLD
+#
+        BEGIN DESCR4       1
+#        Version4 descriptors
+        .   0   0   1
+        I  6|       2       3       1       2       0       2
+        C 32|vgn_equal
+        C 32|integ_vx
+        C 32|Coordinates
+        C 32|OutputField:FLOW_RATE
+        C 32|Velocity
+        C 32|IsAVariableRequired
+        C 32|FEIntegrationRule
+        C 32|Coordinate_System
+        C 32|Function_Type:VNormal
+        C 32|Variable:Velocity
+        ENDOF DESCR4
+#
+        BEGIN PROB1        5
+#        One problem specifications
+        .   1   2   1
+        C 16|Flow Rate
+        I  4|    1000       1       8       1
+        I  3|       1       0       2
+        I  3|       0      21       0
+        I  3|       0       0       0
+        I  3|       0       0       0
+        L  1|   T
+        I  2|       5       1
+        D  0|
+        ENDOF PROB1
+#
+        BEGIN PROB1        6
+#        One problem specifications
+        .   1   2   1
+        C 16|Flow Rate
+        I  4|    1000       1       9       1
+        I  3|       1       0       2
+        I  3|       0      22       0
+        I  3|       0       0       0
+        I  3|       0       0       0
+        L  1|   T
+        I  2|       5       1
+        D  0|
+        ENDOF PROB1
+#
+        BEGIN PROB1        7
+#        One problem specifications
+        .   1   2   1
+        C 16|Flow Rate
+        I  4|    1000       1      10       1
+        I  3|       1       0       2
+        I  3|       0      23       0
+        I  3|       0       0       0
+        I  3|       0       0       0
+        L  1|   T
+        I  2|       5       1
+        D  0|
+        ENDOF PROB1
+#
+        BEGIN PROB1        8
+#        One problem specifications
+        .   1   2   1
+        C 16|Flow Rate
+        I  4|    1000       1      11       1
+        I  3|       1       0       2
+        I  3|       0      24       0
+        I  3|       0       0       0
+        I  3|       0       0       0
+        L  1|   T
+        I  2|       5       1
+        D  0|
+        ENDOF PROB1
+#
+        BEGIN PROB1        9
+#        One problem specifications
+        .   1   1   1
+        C 16|Viscosity
+        I  4|      19       1       7       8
+        I  3|       1       2      10
+        I  1|      25
+        I  1|       0
+        L  7|   F   T   F   F   F   F   F
+        I  7|       2       3       1      12       0       0       0
+        D 35| 6.0000000E+03 1.0000000E+00 4.0000000E-01 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 0.0000000E+00 7.2000000E+02
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00
+#
+          BEGIN CONDI        1
+#          Condition (moving parts)
+          .   0   0   1
+          I  3|      14       0       0
+          I  1|      10
+          I  1|       1
+          D  1| 6.0000002E-01
+          ENDOF CONDI
+        ENDOF PROB1
+#
+        BEGIN PROB1       10
+#        One problem specifications
+        .   1   1   1
+        C 16|Shear rate
+        I  4|      19       1       7       8
+        I  3|       1       2      10
+        I  1|      26
+        I  1|       0
+        L  7|   F   T   F   F   F   F   F
+        I  7|       1       3       1      12       0       0       0
+        D 35| 6.0000000E+03 1.0000000E+00 4.0000000E-01 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 1.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 1.0000000E+00 0.0000000E+00 0.0000000E+00 7.2000000E+02
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            | 0.0000000E+00 0.0000000E+00 0.0000000E+00
+#
+          BEGIN CONDI        1
+#          Condition (moving parts)
+          .   0   0   1
+          I  3|      14       0       0
+          I  1|      10
+          I  1|       1
+          D  1| 6.0000002E-01
+          ENDOF CONDI
+        ENDOF PROB1
+#
+        BEGIN BEVAXS       4
+#        Field init.(parameter) on a boundary
+        .   1   0   1
+        C 16| Coord. imposed
+        I  3|       1       7       0
+        I  1|       1
+        I  4|       1       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        I  4|       2       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        I  4|       3       1       0       0
+        D  0|
+        D  0|
+        D  0|
+        ENDOF BEVAXS
+#
+        BEGIN EVOLU        1
+#        Multi-step problem definition
+        .   1   0   1
+        C  6|RES__1
+#
+          BEGIN SVARIA       1
+#          Evolution problem
+          .   0   1   1
+          C  6|RST__1
+          L  1|   T
+          D  6| 1.0000000E+00 1.0000000E+00 1.0000000E+00 1.0000000E+00
+              | 1.0000000E+00 1.0000000E-02
+          I  2|       1       0
+          I  1|       1
+#
+            BEGIN EVALXS       1
+#            Function(parameter) computation
+            .   0   1   1
+            I  1|       1
+            L  2|   F   F
+            I  8|      12      11      13      14      17      19      15
+                |      28
+            I  3|      30       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      30       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      30       0       0
+            D  0|
+            D  0|
+            D  0|
+            ENDOF EVALXS
+#
+            BEGIN EVALXS       2
+#            Function(parameter) computation
+            .   0   1   1
+            I  1|      29
+            L  2|   F   F
+            I 11|       7      11      12      13      14      17      18
+                |      19      20      16       1
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            ENDOF EVALXS
+#
+            BEGIN EVALXS       3
+#            Function(parameter) computation
+            .   0   1   1
+            I  1|      30
+            L  2|   F   F
+            I 11|      12      11      12      13      14      17      18
+                |      19      20      16       1
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            I  3|      31       0       0
+            D  0|
+            D  0|
+            D  0|
+            ENDOF EVALXS
+          ENDOF SVARIA
+#
+          BEGIN SOLVER       1
+#          Solver
+          .   1   0   1
+          C 16| Preprocessors
+          I  3|       1       9       0
+          L  4|   T   T   F   T
+          D  2| 1.0000000E-03 1.0000000E+03
+          I  1|       3
+          ENDOF SOLVER
+#
+          BEGIN SOLVER       2
+#          Solver
+          .   1   0   1
+          C 16| Preprocessors
+          I  3|       0       9       0
+          L  4|   T   T   F   T
+          D  2| 1.0000000E-03 1.0000000E+03
+          I  1|       4
+          ENDOF SOLVER
+#
+          BEGIN SOLVER       3
+#          Solver
+          .   1   0   1
+          C 16| Preprocessors
+          I  3|      50       9       0
+          L  4|   T   T   T   T
+          D  2| 1.0000000E-03 1.0000000E+03
+          I  1|       2
+          ENDOF SOLVER
+#
+          BEGIN SOLVER       4
+#          Solver
+          .   1   0   1
+          C 16|F.E.M. Task  1
+          I  3|      30       9       0
+          L  4|   T   T   T   T
+          D  2| 1.0000000E-03 1.0000000E+03
+          I  1|       1
+          ENDOF SOLVER
+#
+          BEGIN SOLVER       5
+#          Solver
+          .   1   0   1
+          C 16|Post globals
+          I  3|       1       9       0
+          L  4|   T   T   F   T
+          D  2| 1.0000000E-04 1.0000000E+03
+          I  4|       5       6       7       8
+          ENDOF SOLVER
+#
+          BEGIN DUAL         1
+#          Duality Postprocessor
+          .   0   2   1
+          I  9|       2       1       0      21       0       0       0
+              |       0       0
+          I  1|       1
+          C 80|Forces and Torques
+              |
+          I  5|       0      13      11       0       0
+          D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+          C 80|moving part #1
+              |
+          ENDOF DUAL
+#
+          BEGIN OUTPUT       1
+#          Output
+          .   0   0   1
+          I  2|       1       1
+          D  1| 1.0000000E-02
+          L  1|   T
+#
+            BEGIN PROBE        1
+#            Interface Probe
+            .   0   1   1
+            C  6|PRB__1
+            I  3|       1       0       0
+            I  1|      -1
+            D  3| 0.0000000E+00 0.0000000E+00 0.0000000E+00
+            ENDOF PROBE
+#
+            BEGIN CFXPOST      1
+#            Interface CFXPOST
+            .   0   0   1
+            I  1|       1
+            I  5|       2       3      25      26      30
+            C  6|CFX__1
+#
+              BEGIN SUNITS       1
+#              Units for CFDPost or Ansys Mapper
+              .   0   0   1
+              C 40| LENGTH m
+              C 40| MASS kg
+              C 40| TIME s
+              C 40| TEMPERATURE K
+              C 40| CURRENT A
+              ENDOF SUNITS
+            ENDOF CFXPOST
+#
+            BEGIN SOLVER       1
+#            Solver
+            .   1   0   1
+            C 16|Local shear rate
+            I  3|       1       9       0
+            L  4|   T   T   F   T
+            D  2| 1.0000000E-03 1.0000000E+03
+            I  1|      10
+            ENDOF SOLVER
+#
+            BEGIN SOLVER       2
+#            Solver
+            .   1   0   1
+            C 16|Postprocessors
+            I  3|       1       9       0
+            L  4|   T   T   F   T
+            D  2| 1.0000000E-04 1.0000000E+03
+            I  1|       9
+            ENDOF SOLVER
+          ENDOF OUTPUT
+        ENDOF EVOLU
+      ENDOF PROBLS
+    ENDOF FIELDS
+  ENDOF TOPO
+#
+  BEGIN VERBOS       1
+#  Control of verbosity
+  .   0   0   1
+  C 12|BANNER     2
+  C 12|GPS        0
+  C 12|ADR        0
+  C 12|TOPO       1
+  C 12|FIELDS     0
+  C 12|PROBLEMS   2
+  C 12|B.CONDIT.  0
+  C 12|CONSTRAINT 0
+  C 12|SOLVER     1
+  C 12|HLM        1
+  ENDOF VERBOS
+ENDOF OPEN
