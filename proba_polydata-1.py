@@ -50,14 +50,13 @@ def main():
 		answer = input()
 		answer = answer.casefold()
 		for key, value in params:
-			if answer == 'e':
-				functionality_kapra(value,B)
-				not_found = False
-				break
-			else:
-				functionality_kapra(value,A)
-				not_found = False
-				break
+			if answer == key:
+				if answer == 'e' :
+					functionality_kapra(value,B)
+					not_found = False
+				else:
+					functionality_kapra(value,A)
+					not_found = False
 
 		if answer == 'q':
 			print("Sorry to see you go :(")
