@@ -25,18 +25,20 @@ def functionality_kapra(thing,A):
 	print ("File to perform Search-Replace on:")
 	fileToSearch = input( "> " ) or 'polyflow.dat'
 
-	with open(fileToSearch, 'r+') as tempFile:
+	with open(fileToSearch, 'r') as tempFile:
 		A_index = 0
 		A_Found = False
-		for line in fileinput.input(fileToSearch, inplace=True):
+		lines = tempFile.readlines()
+		for index, line in enumerate(lines):
 			if A_Found == False and A_index<len(A) and A[A_index] in line:
 				A_Found = True
 			if A_Found == True and textToSearch in line:
-				line = line.replace(textToSearch, textToReplace)
-				sys.stderr.write("Match Found\n")
+				lines[index] = line.replace(textToSearch, textToReplace)
+				print("Match Found")
 				A_index +=1
 				A_Found = False
-			sys.stdout.write(line)
+		with open(fileToSearch, 'w') as f:
+			f.writelines(lines)
 
 def main():
 	A = ['BEGIN POWER        1', 'BEGIN PROB1        1', 'BEGIN PROB1        2', 'BEGIN PROB1        9', 'BEGIN PROB1       10']
