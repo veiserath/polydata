@@ -45,7 +45,7 @@ def main():
     A = ['BEGIN POWER        1', 'BEGIN PROB1        1', 'BEGIN PROB1        2', 'BEGIN PROB1        9',
          'BEGIN PROB1       10']
     B = ['BEGIN BDSVE        1', 'I  3|']
-    params = [("a", "Parameter"), ("b", "fac"), ("c", "fnat"), ("d", "expo"), ("e", "Mass flow rate")]
+    params = [("a", "Parameter"), ("b", "fac"), ("c", "tnat"), ("d", "expo"), ("e", "Mass flow rate")]
     while True:
         show_help()
         not_found = True
